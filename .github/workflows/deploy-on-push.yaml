@@ -1,0 +1,23 @@
+name: 🚀 Deploy
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+
+jobs:
+  checks:
+    name: ✅ Pre-deployment checks
+    uses: ./.github/workflows/wk-checks.yaml
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  package:
+    name: 📦️ Package
+    needs: [ checks ]
+    steps:
+      - name: ⤵️ Checkout code
+        uses: actions/checkout@v4

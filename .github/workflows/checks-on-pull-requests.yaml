@@ -1,0 +1,10 @@
+name: ✅ PR checks
+
+on: pull_request
+
+jobs:
+  checks:
+    name: ✅ PR checks
+    uses: ./.github/workflows/wk-checks.yaml
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

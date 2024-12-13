@@ -1,0 +1,36 @@
+name: Reusable Workflow - ✅ Checks
+
+on:
+  workflow_call:
+    secrets:
+      SONAR_TOKEN:
+        required: true
+
+jobs:
+  checks:
+    name: ✅ Tests & Sonar analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '23'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: 🧪 Run tests
+        run: mvn test
+
+      - name: 🔍 Sonar code analysis
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: 🔆 Quality Gate
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        timeout-minutes: 2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

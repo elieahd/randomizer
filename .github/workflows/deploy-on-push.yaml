@@ -23,5 +23,12 @@ jobs:
       - name: ⤵️ Checkout code
         uses: actions/checkout@v4
 
+      - name: ⚙️ Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '23'
+          distribution: 'temurin'
+          cache: maven
+
       - name: Package library
         run: mvn clean package

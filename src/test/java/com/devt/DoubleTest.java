@@ -53,7 +53,8 @@ class DoubleTest {
         // Act
         Throwable thrown = catchThrowable(() -> randomDouble(min, max));
         // Assert
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+        assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Randomizing a double between failed, because min '20.0' should be greater than max '19.9'");
     }
 

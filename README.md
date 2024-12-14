@@ -38,7 +38,6 @@ Other
 
 Functionalities
 
-- add more exceptions on inputs (min, max, length, ...)
 - random objects : `Person person = randomObject(Person.class);`
 - random list of objects : `List<Person> persons = randomListOf(Person.class);`
 - random list of objects with number of elements : `List<Person> persons = randomListOf(Person.class, 5);`

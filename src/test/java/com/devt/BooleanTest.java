@@ -21,7 +21,8 @@ class BooleanTest {
         // Act
         Boolean output = random(Boolean.class);
         // Assert
-        assertThat(output).isNotNull()
+        assertThat(output)
+                .isNotNull()
                 .isIn(true, false);
     }
 

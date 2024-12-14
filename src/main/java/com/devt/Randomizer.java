@@ -99,16 +99,12 @@ public class Randomizer {
         if (clazz == Boolean.class) {
             return clazz.cast(randomBoolean());
         }
-        if (clazz == Integer.class || clazz == int.class) {
+        if (clazz == Integer.class) {
             return clazz.cast(randomInteger());
         }
-        if (clazz == Double.class || clazz == double.class) {
+        if (clazz == Double.class) {
             return clazz.cast(randomDouble());
         }
-
-        //        if (clazz.isEnum()) {
-//            return clazz.cast(randomEnum((Class<? extends Enum<?>>) clazz));
-//        }
         throw new UnsupportedOperationException("Unsupported type: " + clazz);
     }
 

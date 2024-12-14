@@ -12,6 +12,9 @@ public class EnumRandomizer {
 
     public <T extends Enum<T>> T next(Class<T> enumClass) {
         T[] values = enumClass.getEnumConstants();
+        if (values.length == 0) {
+            throw new IllegalArgumentException("Enum '%s' has no values".formatted(enumClass.getCanonicalName()));
+        }
         return values[random.nextInt(values.length)];
     }
 

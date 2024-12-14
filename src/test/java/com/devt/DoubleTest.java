@@ -21,6 +21,14 @@ class DoubleTest {
     }
 
     @RepeatedTest(20)
+    void shouldGenerateRandomOfPrimitiveDoubleClass() {
+        // Act
+        double output = random(double.class);
+        // Assert
+        assertThat(output).isBetween(0.0, 100.0);
+    }
+
+    @RepeatedTest(20)
     void shouldGenerateDoubleBetween0And100() {
         // Act
         Double output = randomDouble();

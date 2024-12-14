@@ -96,11 +96,22 @@ public class Randomizer {
         if (clazz == String.class) {
             return clazz.cast(randomAlphanumeric());
         }
+        if (clazz == boolean.class) {
+            return (T) (Boolean) randomBoolean().booleanValue();
+        }
         if (clazz == Boolean.class) {
             return clazz.cast(randomBoolean());
         }
+        if (clazz == int.class) {
+            Integer value = randomInteger();
+            return (T) value;
+        }
         if (clazz == Integer.class) {
             return clazz.cast(randomInteger());
+        }
+        if (clazz == double.class) {
+            Double value = randomDouble();
+            return (T) value;
         }
         if (clazz == Double.class) {
             return clazz.cast(randomDouble());

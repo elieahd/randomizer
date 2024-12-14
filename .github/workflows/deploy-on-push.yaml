@@ -5,7 +5,6 @@ on:
     branches:
       - 'main'
     paths-ignore:
-      - 'docs/**'
       - '**.md'
 
 jobs:
@@ -31,4 +30,27 @@ jobs:
           cache: maven
 
       - name: Package library
-        run: mvn clean package
+        run: mvn package
+
+      - name: Deploy artifact to maven central
+        run: echo 'todo'
+
+      - name: Get current version
+        id: version
+        run: |
+          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          VERSION=$(echo "$VERSION" | sed 's/-SNAPSHOT$//')
+          echo "value=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Tag current version
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git tag -a "v${{ steps.version.outputs.value }}" -m "chore(release): v${{ steps.version.outputs.value }}"
+          git push origin "v${{ steps.version.outputs.value }}"
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${{ steps.version.outputs.value }}" --title "Release v${{ steps.version.outputs.value }}" --generate-notes
+

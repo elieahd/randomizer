@@ -31,6 +31,7 @@
   - tag in github
   - create release
   - deploy artifact on a maven artifactory
+  - automatic version
 
 ### V`0.2.0`
 - more primitive support

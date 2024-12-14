@@ -8,36 +8,3 @@ jobs:
     uses: ./.github/workflows/wk-checks.yaml
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-  test-release:
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⤵️ Checkout code
-        uses: actions/checkout@v4
-
-      - name: ⚙️ Setup Java
-        uses: actions/setup-java@v4
-        with:
-          java-version: '23'
-          distribution: 'temurin'
-          cache: maven
-
-      - name: Get current version
-        id: version
-        run: |
-          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-          VERSION=$(echo "$VERSION" | sed 's/-SNAPSHOT$//')
-          echo "value=$VERSION" >> "$GITHUB_OUTPUT"
-
-      - name: Tag current version
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git tag -a "v${{ steps.version.outputs.value }}" -m "chore(release): v${{ steps.version.outputs.value }}"
-          git push origin "v${{ steps.version.outputs.value }}"
-
-      - name: Create GitHub release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh release create "${{ steps.version.outputs.value }}" --title "Release v${{ steps.version.outputs.value }}" --generate-notes
-

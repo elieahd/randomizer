@@ -41,7 +41,8 @@ class AlphabeticTest {
         // Act
         Throwable thrown = catchThrowable(() -> randomAlphabetic(length));
         // Assert
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+        assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Randomizing a string failed, length must be greater than 0");
     }
 
@@ -52,7 +53,8 @@ class AlphabeticTest {
         // Act
         Throwable thrown = catchThrowable(() -> randomAlphabetic(length));
         // Assert
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+        assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Randomizing a string failed, length must be greater than 0");
     }
 

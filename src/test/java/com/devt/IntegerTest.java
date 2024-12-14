@@ -53,7 +53,8 @@ class IntegerTest {
         // Act
         Throwable thrown = catchThrowable(() -> randomInteger(min, max));
         // Assert
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+        assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Randomizing an integer between failed, because min '20' should be greater than max '19'");
     }
 

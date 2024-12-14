@@ -55,7 +55,8 @@ class ListTest {
         // Act
         Throwable thrown = catchThrowable(() -> randomListOf(_ -> "toto", numberOfElements));
         // Assert
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+        assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Randomizing list of elements failed, because number of elements '-1' is less than 0");
     }
 }

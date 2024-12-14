@@ -48,7 +48,8 @@ class EnumTest {
         // Act
         Throwable thrown = catchThrowable(() -> randomEnum(NoValue.class));
         // Assert
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+        assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Enum 'com.devt.EnumTest.NoValue' has no values");
     }
 

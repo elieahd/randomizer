@@ -21,6 +21,14 @@ class IntegerTest {
     }
 
     @RepeatedTest(20)
+    void shouldGenerateRandomOfPrimitiveIntClass() {
+        // Act
+        int output = random(int.class);
+        // Assert
+        assertThat(output).isBetween(0, 100);
+    }
+
+    @RepeatedTest(20)
     void shouldGenerateIntegerBetween0And100() {
         // Act
         Integer output = randomInteger();

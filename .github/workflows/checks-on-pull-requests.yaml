@@ -26,11 +26,10 @@ jobs:
         id: version
         run: |
           VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          VERSION=$(echo "$VERSION" | sed 's/-SNAPSHOT$//')
           echo "value=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Tag current version
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
@@ -38,7 +37,5 @@ jobs:
           git push origin "v${{ steps.version.outputs.value }}"
 
       - name: Create GitHub release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         run: gh release create "${{ steps.version.outputs.value }}" --title "Release v${{ steps.version.outputs.value }}" --generate-notes
 

@@ -3,11 +3,22 @@ package com.devt;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+import static com.devt.Randomizer.random;
 import static com.devt.Randomizer.randomInteger;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 class IntegerTest {
+
+    @RepeatedTest(20)
+    void shouldGenerateRandomIntegerClass() {
+        // Act
+        Integer output = random(Integer.class);
+        // Assert
+        assertThat(output)
+                .isNotNull()
+                .isBetween(0, 100);
+    }
 
     @RepeatedTest(20)
     void shouldGenerateIntegerBetween0And100() {

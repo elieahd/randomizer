@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static com.devt.Randomizer.random;
 import static com.devt.Randomizer.randomAlphanumeric;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -15,6 +16,17 @@ class AlphanumericTest {
     void shouldGenerateAlphanumericOf12Characters() {
         // Act
         String output = randomAlphanumeric();
+        // Assert
+        assertThat(output)
+                .isNotNull()
+                .hasSize(12)
+                .matches("[a-zA-Z0-9]*");
+    }
+
+    @RepeatedTest(10)
+    void shouldGenerateRandomStringClass() {
+        // Act
+        String output = random(String.class);
         // Assert
         assertThat(output)
                 .isNotNull()

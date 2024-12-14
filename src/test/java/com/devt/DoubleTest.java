@@ -3,11 +3,22 @@ package com.devt;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+import static com.devt.Randomizer.random;
 import static com.devt.Randomizer.randomDouble;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 class DoubleTest {
+
+    @RepeatedTest(20)
+    void shouldGenerateRandomDoubleClass() {
+        // Act
+        Double output = random(Double.class);
+        // Assert
+        assertThat(output)
+                .isNotNull()
+                .isBetween(0.0, 100.0);
+    }
 
     @RepeatedTest(20)
     void shouldGenerateDoubleBetween0And100() {

@@ -1,23 +1,13 @@
 package com.devt.randomizer.randomizers.fields.numbers;
 
 import com.devt.randomizer.randomizers.Randomizer;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 class FloatRandomizerTest {
-
-    private Random random;
-
-    @BeforeEach
-    void setUp() {
-        random = new Random();
-    }
 
     @RepeatedTest(10)
     void shouldGenerateARandomValueBetweenMinAndMax() {
@@ -25,7 +15,7 @@ class FloatRandomizerTest {
         float min = 10f;
         float max = 20f;
         // Act
-        Randomizer<Float> randomizer = new FloatRandomizer(random, min, max);
+        Randomizer<Float> randomizer = new FloatRandomizer(min, max);
         Float output = randomizer.next();
         // Assert
         assertThat(output)
@@ -39,7 +29,7 @@ class FloatRandomizerTest {
         float min = 10f;
         float max = 10f;
         // Act
-        Randomizer<Float> randomizer = new FloatRandomizer(random, min, max);
+        Randomizer<Float> randomizer = new FloatRandomizer(min, max);
         Float output = randomizer.next();
         // Assert
         assertThat(output)
@@ -54,7 +44,7 @@ class FloatRandomizerTest {
         float max = 9.9f;
         // Act
         Throwable thrown = catchThrowable(() -> {
-            Randomizer<Float> randomizer = new FloatRandomizer(random, min, max);
+            Randomizer<Float> randomizer = new FloatRandomizer(min, max);
             randomizer.next();
         });
         // Assert

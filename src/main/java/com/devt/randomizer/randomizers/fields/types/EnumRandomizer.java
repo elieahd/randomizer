@@ -2,15 +2,13 @@ package com.devt.randomizer.randomizers.fields.types;
 
 import com.devt.randomizer.randomizers.Randomizer;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class EnumRandomizer<T extends Enum<T>> implements Randomizer<T> {
 
-    private final Random random;
     private final T[] values;
 
-    public EnumRandomizer(Random random, Class<T> enumClass) {
-        this.random = random;
+    public EnumRandomizer(Class<T> enumClass) {
         if (enumClass.getEnumConstants().length == 0) {
             throw new IllegalArgumentException(
                     "Enum randomizer failed initializing for '%s', because it does not contains any value"
@@ -22,7 +20,7 @@ public class EnumRandomizer<T extends Enum<T>> implements Randomizer<T> {
 
     @Override
     public T next() {
-        int index = random.nextInt(values.length);
+        int index = ThreadLocalRandom.current().nextInt(values.length);
         return values[index];
     }
 

@@ -1,23 +1,13 @@
 package com.devt.randomizer.randomizers.fields.numbers;
 
 import com.devt.randomizer.randomizers.Randomizer;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 class LongRandomizerTest {
-
-    private Random random;
-
-    @BeforeEach
-    void setUp() {
-        random = new Random();
-    }
 
     @RepeatedTest(10)
     void shouldGenerateARandomValueBetweenMinAndMax() {
@@ -25,7 +15,7 @@ class LongRandomizerTest {
         long min = 10;
         long max = 20;
         // Act
-        Randomizer<Long> randomizer = new LongRandomizer(random, min, max);
+        Randomizer<Long> randomizer = new LongRandomizer(min, max);
         Long output = randomizer.next();
         // Assert
         assertThat(output)
@@ -39,7 +29,7 @@ class LongRandomizerTest {
         long min = 10;
         long max = 10;
         // Act
-        Randomizer<Long> randomizer = new LongRandomizer(random, min, max);
+        Randomizer<Long> randomizer = new LongRandomizer(min, max);
         Long output = randomizer.next();
         // Assert
         assertThat(output)
@@ -54,7 +44,7 @@ class LongRandomizerTest {
         long max = 9;
         // Act
         Throwable thrown = catchThrowable(() -> {
-            Randomizer<Long> randomizer = new LongRandomizer(random, min, max);
+            Randomizer<Long> randomizer = new LongRandomizer(min, max);
             randomizer.next();
         });
         // Assert

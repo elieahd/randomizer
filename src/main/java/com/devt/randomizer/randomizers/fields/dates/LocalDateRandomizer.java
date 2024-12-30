@@ -2,12 +2,11 @@ package com.devt.randomizer.randomizers.fields.dates;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Random;
 
 public class LocalDateRandomizer extends AbstractDateRandomizer<LocalDate> {
 
-    public LocalDateRandomizer(Random random, LocalDateTime from, LocalDateTime to) {
-        super(random, from, to);
+    public LocalDateRandomizer(LocalDateTime from, LocalDateTime to) {
+        super(from, to);
     }
 
     @Override

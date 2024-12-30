@@ -1,25 +1,16 @@
 package com.devt.randomizer.randomizers.fields.numbers;
 
 import com.devt.randomizer.randomizers.Randomizer;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 class BigDecimalRandomizerTest {
-
-    private Random random;
-
-    @BeforeEach
-    void setUp() {
-        random = new Random();
-    }
 
     @RepeatedTest(10)
     void shouldGenerateARandomValueBetweenMinAndMax() {
@@ -29,7 +20,7 @@ class BigDecimalRandomizerTest {
         int scale = 2;
         RoundingMode roundingMode = RoundingMode.HALF_UP;
         // Act
-        Randomizer<BigDecimal> randomizer = new BigDecimalRandomizer(random, min, max, scale, roundingMode);
+        Randomizer<BigDecimal> randomizer = new BigDecimalRandomizer(min, max, scale, roundingMode);
         BigDecimal output = randomizer.next();
         // Assert
         assertThat(output)
@@ -49,7 +40,7 @@ class BigDecimalRandomizerTest {
         int scale = 2;
         RoundingMode roundingMode = RoundingMode.HALF_UP;
         // Act
-        Randomizer<BigDecimal> randomizer = new BigDecimalRandomizer(random, min, max, scale, roundingMode);
+        Randomizer<BigDecimal> randomizer = new BigDecimalRandomizer(min, max, scale, roundingMode);
         BigDecimal output = randomizer.next();
         // Assert
         assertThat(output)
@@ -66,7 +57,7 @@ class BigDecimalRandomizerTest {
         RoundingMode roundingMode = RoundingMode.HALF_UP;
         // Act
         Throwable thrown = catchThrowable(() -> {
-            Randomizer<BigDecimal> randomizer = new BigDecimalRandomizer(random, min, max, scale, roundingMode);
+            Randomizer<BigDecimal> randomizer = new BigDecimalRandomizer(min, max, scale, roundingMode);
             randomizer.next();
         });
         // Assert

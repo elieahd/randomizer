@@ -1,28 +1,18 @@
 package com.devt.randomizer.randomizers.fields.types;
 
 import com.devt.randomizer.randomizers.Randomizer;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 class EnumRandomizerTest {
 
-    private Random random;
-
-    @BeforeEach
-    void setUp() {
-        random = new Random();
-    }
-
     @RepeatedTest(20)
     void shouldGenerateRandomEnum() {
         // Act
-        Randomizer<Color> randomizer = new EnumRandomizer<>(random, Color.class);
+        Randomizer<Color> randomizer = new EnumRandomizer<>(Color.class);
         Color output = randomizer.next();
         // Assert
         assertThat(output)
@@ -33,7 +23,7 @@ class EnumRandomizerTest {
     @Test
     void shouldGenerateRandomEnumWith1Value() {
         // Act
-        Randomizer<UnoValue> randomizer = new EnumRandomizer<>(random, UnoValue.class);
+        Randomizer<UnoValue> randomizer = new EnumRandomizer<>(UnoValue.class);
         UnoValue output = randomizer.next();
         // Assert
         assertThat(output)
@@ -45,7 +35,7 @@ class EnumRandomizerTest {
     void shouldThrowIllegalArgumentExceptionWhenNoValuesInEnum() {
         // Act
         Throwable thrown = catchThrowable(() -> {
-            Randomizer<NoValue> randomizer = new EnumRandomizer<>(random, NoValue.class);
+            Randomizer<NoValue> randomizer = new EnumRandomizer<>(NoValue.class);
             randomizer.next();
         });
         // Assert

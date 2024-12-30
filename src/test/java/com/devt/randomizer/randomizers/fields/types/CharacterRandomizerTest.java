@@ -4,8 +4,6 @@ import com.devt.randomizer.randomizers.Randomizer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-import java.util.Random;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CharacterRandomizerTest {
@@ -14,8 +12,7 @@ class CharacterRandomizerTest {
 
     @BeforeEach
     void setUp() {
-        Random random = new Random();
-        randomizer = new CharacterRandomizer(random);
+        randomizer = new CharacterRandomizer();
     }
 
     @RepeatedTest(10)

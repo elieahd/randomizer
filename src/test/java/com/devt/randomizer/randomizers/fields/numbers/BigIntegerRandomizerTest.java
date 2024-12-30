@@ -1,24 +1,15 @@
 package com.devt.randomizer.randomizers.fields.numbers;
 
 import com.devt.randomizer.randomizers.Randomizer;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 class BigIntegerRandomizerTest {
-
-    private Random random;
-
-    @BeforeEach
-    void setUp() {
-        random = new Random();
-    }
 
     @RepeatedTest(10)
     void shouldGenerateARandomValueBetweenMinAndMax() {
@@ -26,7 +17,7 @@ class BigIntegerRandomizerTest {
         BigInteger min = BigInteger.TEN;
         BigInteger max = BigInteger.valueOf(100L);
         // Act
-        Randomizer<BigInteger> randomizer = new BigIntegerRandomizer(random, min, max);
+        Randomizer<BigInteger> randomizer = new BigIntegerRandomizer(min, max);
         BigInteger output = randomizer.next();
         // Assert
         assertThat(output)
@@ -40,7 +31,7 @@ class BigIntegerRandomizerTest {
         BigInteger min = BigInteger.TEN;
         BigInteger max = BigInteger.TEN;
         // Act
-        Randomizer<BigInteger> randomizer = new BigIntegerRandomizer(random, min, max);
+        Randomizer<BigInteger> randomizer = new BigIntegerRandomizer(min, max);
         BigInteger output = randomizer.next();
         // Act
         // Assert
@@ -56,7 +47,7 @@ class BigIntegerRandomizerTest {
         BigInteger max = BigInteger.TWO;
         // Act
         Throwable thrown = catchThrowable(() -> {
-            Randomizer<BigInteger> randomizer = new BigIntegerRandomizer(random, min, max);
+            Randomizer<BigInteger> randomizer = new BigIntegerRandomizer(min, max);
             randomizer.next();
         });
         // Assert

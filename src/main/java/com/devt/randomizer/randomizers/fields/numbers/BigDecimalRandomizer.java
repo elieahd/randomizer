@@ -4,18 +4,16 @@ import com.devt.randomizer.randomizers.Randomizer;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class BigDecimalRandomizer implements Randomizer<BigDecimal> {
 
-    private final Random random;
     private final BigDecimal min;
     private final BigDecimal max;
     private final int scale;
     private final RoundingMode roundingMode;
 
-    public BigDecimalRandomizer(Random random,
-                                BigDecimal min,
+    public BigDecimalRandomizer(BigDecimal min,
                                 BigDecimal max,
                                 int scale,
                                 RoundingMode roundingMode) {
@@ -25,7 +23,6 @@ public class BigDecimalRandomizer implements Randomizer<BigDecimal> {
                             .formatted(min, max)
             );
         }
-        this.random = random;
         this.min = min;
         this.max = max;
         this.scale = scale;
@@ -38,7 +35,7 @@ public class BigDecimalRandomizer implements Randomizer<BigDecimal> {
             return min;
         }
         BigDecimal range = max.subtract(min);
-        BigDecimal randomFactor = BigDecimal.valueOf(random.nextDouble());
+        BigDecimal randomFactor = BigDecimal.valueOf(ThreadLocalRandom.current().nextDouble());
         return min.add(range.multiply(randomFactor))
                 .setScale(scale, roundingMode);
     }

@@ -1,23 +1,13 @@
 package com.devt.randomizer.randomizers.fields.numbers;
 
 import com.devt.randomizer.randomizers.Randomizer;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 class IntegerRandomizerTest {
-
-    private Random random;
-
-    @BeforeEach
-    void setUp() {
-        random = new Random();
-    }
 
     @RepeatedTest(10)
     void shouldGenerateIntegerBetween2Numbers() {
@@ -25,7 +15,7 @@ class IntegerRandomizerTest {
         int min = 10;
         int max = 20;
         // Act
-        Randomizer<Integer> randomizer = new IntegerRandomizer(random, min, max);
+        Randomizer<Integer> randomizer = new IntegerRandomizer(min, max);
         Integer output = randomizer.next();
         // Assert
         assertThat(output)
@@ -39,7 +29,7 @@ class IntegerRandomizerTest {
         int min = 10;
         int max = 10;
         // Act
-        Randomizer<Integer> randomizer = new IntegerRandomizer(random, min, max);
+        Randomizer<Integer> randomizer = new IntegerRandomizer(min, max);
         Integer output = randomizer.next();
         // Assert
         assertThat(output)
@@ -54,7 +44,7 @@ class IntegerRandomizerTest {
         int max = 9;
         // Act
         Throwable thrown = catchThrowable(() -> {
-            Randomizer<Integer> randomizer = new IntegerRandomizer(random, min, max);
+            Randomizer<Integer> randomizer = new IntegerRandomizer(min, max);
             randomizer.next();
         });
         // Assert

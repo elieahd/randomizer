@@ -32,15 +32,15 @@ jobs:
       - name: 📦️ Package library
         run: mvn package
 
-      - name: 🚀 Deploy artifact to maven central
-        run: echo 'todo'
-
       - name: 🔢 Get current version
         id: version
         run: |
           VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           VERSION=$(echo "$VERSION" | sed 's/-SNAPSHOT$//')
           echo "value=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: 🚀 Deploy artifact to maven central
+        run: echo 'todo'
 
       - name: 📍Tag current version
         run: |
@@ -52,7 +52,7 @@ jobs:
       - name: 🆙 Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "${{ steps.version.outputs.value }}" --title "Release v${{ steps.version.outputs.value }}" --generate-notes
-
-      - name: ⬆️ Increase version for next release
-        run: echo 'todo'
+        run: |
+          gh release create "v${{ steps.version.outputs.value }}" \
+            --title "Release v${{ steps.version.outputs.value }}" \
+            --generate-notes

@@ -1,58 +1,69 @@
 # Randomizer
 
-## Roadmap
+## Types
 
-### v`0.1.0` + `0.2.0`
+### Field types
 
-- [x] Numbers
-    - [x] BigDecimal
-    - [x] BigInteger
-    - [x] Double / double
-    - [x] Float / float
-    - [x] Integer / int
-    - [x] Long / long
-    - [x] Short / short
-- [x] String
-- [x] Character / char
-- [x] Byte / byte
-- [x] Enum
-- [x] UUID
-- [x] Dates
-    - [x] java.util.Date
-    - [x] java.sql.Date
-    - [x] java.time.LocalDate
-    - [x] java.time.LocalTime
-    - [x] java.time.LocalDateTime
-    - [x] java.time.ZonedDateTime
-    - [x] java.time.OffsetDateTime
-    - [x] java.time.OffsetTime
-    - [x] java.time.Instant
-- [x] Collection
-    - [x] `Map`
-    - [x] `Set`
-    - [x] `Array`
-    - [x] `Stream`
-    - [x] `List`
-- [x] `Devops` : automatic checks on PR
-    - [x] tests
-    - [x] sonar analysis
-    - [x] sonar quality gate
-- [x] `Devops` : automatic deployments on push on `main`
-    - [x] pre-checks (tests, sonar analysis, sonar analysis gate)
-    - [x] package
-    - [ ] deploy artifact on a maven artifactory
-    - [x] tag in github
-    - [x] create release
+| Class            | Usage                                                   | Description                                                                                                 |
+|------------------|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| `int`            | `int output = random(int.class);`                       | random `int` between `0` and `100`                                                                          |
+| `Integer`        | `Integer output = random(Integer.class);`               | random `Integer` between `0` and `100`                                                                      |
+| `float`          | `float output = random(float.class);`                   | random `float` between `0.0f` and `100.0f`                                                                  |
+| `Float`          | `Float output = random(Float.class);`                   | random `Float` between `0.0f` and `100.0f`                                                                  |
+| `double`         | `double output = random(double.class);`                 | random `double` between `0.0` and `100.0`                                                                   |
+| `Double`         | `Double output = random(Double.class);`                 | random `Double` between `0.0` and `100.0`                                                                   |
+| `long`           | `long output = random(long.class);`                     | random `long` between `0L` and `100L`                                                                       |
+| `Long`           | `Long output = random(Long.class);`                     | random `Long` between `0L` and `100L`                                                                       |
+| `short`          | `short output = random(short.class);`                   | random `short` between `0` and `100`                                                                        |
+| `Short`          | `Short output = random(Short.class);`                   | random `Short` between `0` and `100`                                                                        |
+| `BigDecimal`     | `BigDecimal output = random(BigDecimal.class);`         | random `BigDecimal` between `BigDecimal.ZERO` and `BigDecimal.valueOf(100.0)`                               |
+| `BigInteger`     | `BigInteger output = random(BigInteger.class);`         | random `BigInteger` between `BigInteger.ZERO` and `BigInteger.valueOf(100L)`                                |
+| `String`         | `String output = random(String.class);`                 | random `String` of 10 characters alphanumeric values (uppercase and lowercase) including special characters |
+| `Character`      | `Character output = random(Character.class);`           | random `Character` letters                                                                                  |
+| `char`           | `char output = random(char.class);`                     | random `char` letters                                                                                       |
+| `Byte`           | `Byte output = random(Byte.class);`                     | random `Byte` between `-128` and `127`                                                                      |
+| `byte`           | `byte output = random(byte.class);`                     | random `byte` between `-128` and `127`                                                                      |
+| `UUID`           | `BigInteger output = random(BigInteger.class);`         | random `BigInteger` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                                |
+| `Date`           | `Date output = random(Date.class);`                     | random `java.util.Date` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                            |
+| `Date`           | `Date output = random(Date.class);`                     | random `java.sql.Date` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                             |
+| `LocalDate`      | `LocalDate output = random(LocalDate.class);`           | random `LocalDate` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                                 |
+| `LocalTime`      | `LocalTime output = random(LocalTime.class);`           | random `LocalTime` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                                 |
+| `LocalDateTime`  | `LocalDateTime output = random(LocalDateTime.class);`   | random `LocalDateTime` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                             |
+| `ZonedDateTime`  | `ZonedDateTime output = random(ZonedDateTime.class);`   | random `ZonedDateTime` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                             |
+| `OffsetDateTime` | `OffsetDateTime output = random(OffsetDateTime.class);` | random `OffsetDateTime` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                            |
+| `OffsetTime`     | `OffsetTime output = random(OffsetTime.class);`         | random `OffsetTime` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                                |
+| `Instant`        | `Instant output = random(Instant.class);`               | random `Instant` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                                   |
+| `Enum`           | `Color output = random(Color.class);`                   | random an enum value (exception is thrown if enum does not contains any values)                             |
 
-### v`0.3.0`
+### Collection randomizer
 
-- [ ] random objects : `random(Person.class);`
-- [ ] random record : `random(Person.class);`
-- [ ] random collection : `randomListOf(Person.class);`, ...
+| Class    | Usage                                                                      | Description                                                                       |
+|----------|----------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| `List`   | `List<String> elements = randomListOf(String.class)`                       | generate a list of 5 elements of random string                                    |
+| `Map`    | `Map<Integer, String> elements = randomMapOf(Integer.class, String.class)` | generate a map of 5 elements of random integer as key with value as random string |
+| `Set`    | `Set<String> elements = randomSetOf(String.class)`                         | generate a set of 5 elements of random string                                     |
+| `Array`  | `String[] elements = randomArrayOf(String.class)`                          | generate an array of 5 elements of random string                                  |
+| `Stream` | `Stream<String> elements = randomStreamOf(String.class)`                   | generate a stream of 5 elements of random string                                  |
 
-### Future enhancements
+## Todo / Backlog
 
-- [ ] `Performance` : performance and KPI for each method
-- [ ] `Performance` : `java.util.random` vs `java.util.concurrent.ThreadLocalRandom`
-- [ ] `Cache` : collection randomizers
-- [ ] `Documentation` : `MKDocs` site to document functionalities and capacities
+| Category        | Description                                              | Version |
+|-----------------|----------------------------------------------------------|---------|
+| `Devops`        | publish artifact to maven central                        | `0.2.0` |
+| `Functionality` | randomize object (e.g. `random(Person.class)`            | `0.3.0` |
+| `Functionality` | randomize record (e.g. `random(Person.class)`            | `0.3.0` |
+| `Functionality` | randomize collection (e.g. `randomListOf(Person.class)`) | `0.3.0` |
+| `Functionality` | configure randomizer parameter                           |         |
+| `Functionality` | register/override randomizers                            |         |
+| `Performance`   | performance and KPI for each method                      |         |
+| `Performance`   | cache collection randomizers                             |         |
+| `Documentation` | `MKDocs` site to document functionalities and capacities |         |
+
+## Pipelines
+
+| Event            | Description                                                                                             | 
+|------------------|---------------------------------------------------------------------------------------------------------|
+| `push` on `main` | Pre-Checks (test + sonar analysis + sonar gate) -> Automatic Deployment (package, deploy, tag, release) |
+| `pull request`   | Checks (test + sonar analysis + sonar gate)                                                             |
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=elieahd_randomizer&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=elieahd_randomizer)

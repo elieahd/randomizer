@@ -1,4 +1,6 @@
 # Randomizer
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=elieahd_randomizer&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=elieahd_randomizer)
+[![codecov](https://codecov.io/github/elieahd/randomizer/graph/badge.svg?token=Z8LY9K22WV)](https://codecov.io/github/elieahd/randomizer)
 
 ## Types
 
@@ -61,9 +63,8 @@
 
 ## Pipelines
 
-| Event            | Description                                                                                             | 
-|------------------|---------------------------------------------------------------------------------------------------------|
-| `push` on `main` | Pre-Checks (test + sonar analysis + sonar gate) -> Automatic Deployment (package, deploy, tag, release) |
-| `pull request`   | Checks (test + sonar analysis + sonar gate)                                                             |
-
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=elieahd_randomizer&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=elieahd_randomizer)
+| Event            | Description                                                                  | Pipeline                                                                                                                                                                                                        | 
+|------------------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `push` on `main` | Pre-Checks (test + codecov + sonar), <br/> Deployment (deploy, tag, release) | [![🚀 Deploy](https://github.com/elieahd/randomizer/actions/workflows/deploy-on-push.yaml/badge.svg)](https://github.com/elieahd/randomizer/actions/workflows/deploy-on-push.yaml)                              |
+| `pull request`   | Checks (test + sonar)                                                        | [![✅ PR checks](https://github.com/elieahd/randomizer/actions/workflows/checks-on-pull-requests.yaml/badge.svg)](https://github.com/elieahd/randomizer/actions/workflows/checks-on-pull-requests.yaml)          |
+| `weekly`         | Dependabot updates <br/> maintaining maven and github actions dependencies   | [![Dependabot Updates](https://github.com/elieahd/randomizer/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/elieahd/randomizer/actions/workflows/dependabot/dependabot-updates) |

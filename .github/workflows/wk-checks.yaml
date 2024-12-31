@@ -2,9 +2,17 @@ name: Reusable Workflow - ✅ Checks
 
 on:
   workflow_call:
+    inputs:
+      upload-codecov:
+        description: Upload code coverage
+        type: boolean
+        required: false
+        default: false
     secrets:
       SONAR_TOKEN:
         required: true
+      CODECOV_TOKEN:
+        required: false
 
 jobs:
   checks:
@@ -23,6 +31,12 @@ jobs:
 
       - name: 🧪 Run tests
         run: mvn verify
+
+      - name: 🔍 Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: elieahd/randomizer
 
       - name: 🔍 Sonar code analysis
         uses: sonarsource/sonarqube-scan-action@v4

@@ -2,9 +2,8 @@ package com.devt.randomizer.randomizers.collections;
 
 import com.devt.randomizer.randomizers.Randomizer;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class MapRandomizer<K, V> implements Randomizer<Map<K, V>> {
 
@@ -26,12 +25,12 @@ public class MapRandomizer<K, V> implements Randomizer<Map<K, V>> {
 
     @Override
     public Map<K, V> next() {
-        return IntStream.range(0, numberOfElements)
-                .boxed()
-                .collect(Collectors.toMap(
-                        _ -> keyRandomizer.next(),
-                        _ -> valueRandomizer.next()
-                ));
+        Map<K, V> result = new HashMap<>();
+        while (result.size() < numberOfElements) {
+            K key = keyRandomizer.next();
+            result.computeIfAbsent(key, _ -> valueRandomizer.next());
+        }
+        return result;
     }
 
 }

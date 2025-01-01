@@ -1,6 +1,4 @@
-package com.devt.randomizer.randomizers.stubs;
-
-import com.devt.randomizer.randomizers.Randomizer;
+package com.devt.randomizer.randomizers;
 
 public class StubRandomizer implements Randomizer<String> {
 

@@ -1,7 +1,7 @@
 package com.devt.randomizer.randomizers.collections;
 
 import com.devt.randomizer.randomizers.Randomizer;
-import com.devt.randomizer.randomizers.stubs.StubRandomizer;
+import com.devt.randomizer.randomizers.StubRandomizer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

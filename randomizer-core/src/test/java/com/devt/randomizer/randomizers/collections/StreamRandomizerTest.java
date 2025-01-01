@@ -1,24 +1,22 @@
 package com.devt.randomizer.randomizers.collections;
 
 import com.devt.randomizer.randomizers.Randomizer;
-import com.devt.randomizer.randomizers.stubs.StubRandomizer;
+import com.devt.randomizer.randomizers.StubRandomizer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-class MapRandomizerTest {
+class StreamRandomizerTest {
 
-    private Randomizer<String> keyRandomizer;
-    private Randomizer<String> valueRandomizer;
+    private Randomizer<String> elementRandomizer;
 
     @BeforeEach
     void setUp() {
-        keyRandomizer = new StubRandomizer("key");
-        valueRandomizer = new StubRandomizer("value");
+        elementRandomizer = new StubRandomizer("element");
     }
 
     @Test
@@ -26,15 +24,13 @@ class MapRandomizerTest {
         // Arrange
         int numberOfElements = 3;
         // Act
-        MapRandomizer<String, String> randomizer = new MapRandomizer<>(keyRandomizer, valueRandomizer, numberOfElements);
-        Map<String, String> output = randomizer.next();
+        StreamRandomizer<String> randomizer = new StreamRandomizer<>(elementRandomizer, numberOfElements);
+        Stream<String> output = randomizer.next();
         // Assert
         assertThat(output)
                 .isNotNull()
                 .hasSize(numberOfElements)
-                .containsEntry("key1", "value1")
-                .containsEntry("key2", "value2")
-                .containsEntry("key3", "value3");
+                .containsExactly("element1", "element2", "element3");
     }
 
     @Test
@@ -42,13 +38,13 @@ class MapRandomizerTest {
         // Arrange
         int numberOfElements = 1;
         // Act
-        MapRandomizer<String, String> randomizer = new MapRandomizer<>(keyRandomizer, valueRandomizer, numberOfElements);
-        Map<String, String> output = randomizer.next();
+        StreamRandomizer<String> randomizer = new StreamRandomizer<>(elementRandomizer, numberOfElements);
+        Stream<String> output = randomizer.next();
         // Assert
         assertThat(output)
                 .isNotNull()
                 .hasSize(1)
-                .containsEntry("key1", "value1");
+                .contains("element1");
     }
 
     @Test
@@ -57,7 +53,7 @@ class MapRandomizerTest {
         int numberOfElements = 0;
         // Act
         Throwable thrown = catchThrowable(() -> {
-            MapRandomizer<String, String> randomizer = new MapRandomizer<>(keyRandomizer, valueRandomizer, numberOfElements);
+            StreamRandomizer<String> randomizer = new StreamRandomizer<>(elementRandomizer, numberOfElements);
             randomizer.next();
         });
         // Assert
@@ -72,7 +68,7 @@ class MapRandomizerTest {
         int numberOfElements = -1;
         // Act
         Throwable thrown = catchThrowable(() -> {
-            MapRandomizer<String, String> randomizer = new MapRandomizer<>(keyRandomizer, valueRandomizer, numberOfElements);
+            StreamRandomizer<String> randomizer = new StreamRandomizer<>(elementRandomizer, numberOfElements);
             randomizer.next();
         });
         // Assert

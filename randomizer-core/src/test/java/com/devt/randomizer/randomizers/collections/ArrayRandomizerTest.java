@@ -1,16 +1,14 @@
 package com.devt.randomizer.randomizers.collections;
 
 import com.devt.randomizer.randomizers.Randomizer;
-import com.devt.randomizer.randomizers.stubs.StubRandomizer;
+import com.devt.randomizer.randomizers.StubRandomizer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-class SetRandomizerTest {
+class ArrayRandomizerTest {
 
     private Randomizer<String> elementRandomizer;
 
@@ -24,8 +22,8 @@ class SetRandomizerTest {
         // Arrange
         int numberOfElements = 3;
         // Act
-        SetRandomizer<String> randomizer = new SetRandomizer<>(elementRandomizer, numberOfElements);
-        Set<String> output = randomizer.next();
+        ArrayRandomizer<String> randomizer = new ArrayRandomizer<>(elementRandomizer, String.class, numberOfElements);
+        String[] output = randomizer.next();
         // Assert
         assertThat(output)
                 .isNotNull()
@@ -38,8 +36,8 @@ class SetRandomizerTest {
         // Arrange
         int numberOfElements = 1;
         // Act
-        SetRandomizer<String> randomizer = new SetRandomizer<>(elementRandomizer, numberOfElements);
-        Set<String> output = randomizer.next();
+        ArrayRandomizer<String> randomizer = new ArrayRandomizer<>(elementRandomizer, String.class, numberOfElements);
+        String[] output = randomizer.next();
         // Assert
         assertThat(output)
                 .isNotNull()
@@ -53,7 +51,7 @@ class SetRandomizerTest {
         int numberOfElements = 0;
         // Act
         Throwable thrown = catchThrowable(() -> {
-            SetRandomizer<String> randomizer = new SetRandomizer<>(elementRandomizer, numberOfElements);
+            ArrayRandomizer<String> randomizer = new ArrayRandomizer<>(elementRandomizer, String.class, numberOfElements);
             randomizer.next();
         });
         // Assert
@@ -68,7 +66,7 @@ class SetRandomizerTest {
         int numberOfElements = -1;
         // Act
         Throwable thrown = catchThrowable(() -> {
-            SetRandomizer<String> randomizer = new SetRandomizer<>(elementRandomizer, numberOfElements);
+            ArrayRandomizer<String> randomizer = new ArrayRandomizer<>(elementRandomizer, String.class, numberOfElements);
             randomizer.next();
         });
         // Assert

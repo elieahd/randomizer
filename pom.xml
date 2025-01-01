@@ -7,6 +7,30 @@
     <groupId>com.devt</groupId>
     <artifactId>randomizer</artifactId>
     <version>0.2.0-SNAPSHOT</version>
+    <description>Randomizing data for various types. Ideal for testing and creating dummy data</description>
+    <url>https://github.com/elieahd/randomizer</url>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Elie Daher</name>
+            <email>no@gmail.com</email>
+            <organization>DevT</organization>
+            <organizationUrl>https://www.sonatype.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/elieahd/randomizer.git</connection>
+        <developerConnection>scm:git:ssh://github.com:elieahd/randomizer.git</developerConnection>
+        <url>http://github.com/elieahd/randomizer/tree/main</url>
+    </scm>
 
     <properties>
         <java.version>23</java.version>

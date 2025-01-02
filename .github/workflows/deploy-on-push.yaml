@@ -33,19 +33,17 @@ jobs:
           distribution: 'temurin'
           cache: maven
           server-id: ossrh-releases
-          server-username: OSSRH_USERNAME ${{ secrets.OSSRH_USERNAME }}
-          server-password: OSSRH_TOKEN ${{ secrets.OSSRH_TOKEN }}
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          gpg-passphrase: GPG_PASSPHRASE ${{ secrets.GPG_PASSPHRASE }}
-
-#      - name: 📦️ Package library
-#        run: mvn package -DskipTests
+          server-username: OSSRH_USERNAME
+          server-password: OSSRH_TOKEN
+          gpg-private-key: GPG_PRIVATE_KEY
+          gpg-passphrase: GPG_PASSPHRASE
 
       - name: 🚀 Deploy artifact to maven central
         run: mvn deploy -DskipTests
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: 🔢 Get current version

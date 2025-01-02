@@ -3,6 +3,15 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=elieahd_randomizer&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=elieahd_randomizer)
 [![codecov](https://codecov.io/github/elieahd/randomizer/graph/badge.svg?token=Z8LY9K22WV)](https://codecov.io/github/elieahd/randomizer)
 
+## Dependency
+```xml
+<dependency>
+    <groupId>io.github.elieahd</groupId>
+    <artifactId>randomizer</artifactId>
+    <version>0.2.3</version>
+</dependency>
+```
+
 ## Types
 
 ### Field types

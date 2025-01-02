@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'main'
+      - 'chore/deploy-artifact'
     paths-ignore:
       - '**.md'
 
@@ -42,8 +43,23 @@ jobs:
           VERSION=$(echo "$VERSION" | sed 's/-SNAPSHOT$//')
           echo "value=$VERSION" >> "$GITHUB_OUTPUT"
 
+      - name: ⚙️ Configure Maven Repository Credentials
+        env:
+          OSS_CENTRAL_USERNAME: ${{ secrets.OSS_USERNAME }}
+          OSS_CENTRAL_PASSWORD: ${{ secrets.OSS_PASSWORD }}
+        run: |
+          echo "<settings>
+            <servers>
+              <server>
+                <id>central</id>
+                <username>${OSS_CENTRAL_USERNAME}</username>
+                <password>${OSS_CENTRAL_PASSWORD}</password>
+              </server>
+            </servers>
+          </settings>" > $HOME/.m2/settings.xml
+
       - name: 🚀 Deploy artifact to maven central
-        run: echo 'todo'
+        run: mvn deploy
 
       - name: 📍Tag current version
         run: |

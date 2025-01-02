@@ -1,9 +1,13 @@
 # Randomizer
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.elieahd/randomizer.svg)](https://central.sonatype.com/artifact/io.github.elieahd/randomizer)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=elieahd_randomizer&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=elieahd_randomizer)
 [![codecov](https://codecov.io/github/elieahd/randomizer/graph/badge.svg?token=Z8LY9K22WV)](https://codecov.io/github/elieahd/randomizer)
 
 ## Dependency
+
+Artifact has been deployed to maven central. 
+
 ```xml
 <dependency>
     <groupId>io.github.elieahd</groupId>
@@ -12,9 +16,9 @@
 </dependency>
 ```
 
-## Types
+Check [here](https://central.sonatype.com/artifact/io.github.elieahd/randomizer/versions) for versions 
 
-### Field types
+## Types
 
 | Usage                                                   | Description                                                                                                 |
 |---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
@@ -57,19 +61,18 @@
 | `String[] elements = randomArrayOf(String.class)`                          | generate an array of 5 elements of random string                                  |
 | `Stream<String> elements = randomStreamOf(String.class)`                   | generate a stream of 5 elements of random string                                  |
 
-## Todo / Backlog
+## Backlog
 
-| Category        | Description                                              | Version |
-|-----------------|----------------------------------------------------------|---------|
-| `Devops`        | publish artifact to maven central                        | `0.2.0` |
-| `Functionality` | randomize object (e.g. `random(Person.class)`            | `0.3.0` |
-| `Functionality` | randomize record (e.g. `random(Person.class)`            | `0.3.0` |
-| `Functionality` | randomize collection (e.g. `randomListOf(Person.class)`) | `0.3.0` |
-| `Functionality` | configure randomizer parameter                           |         |
-| `Functionality` | register/override randomizers                            |         |
-| `Performance`   | performance and KPI for each method                      |         |
-| `Performance`   | cache collection randomizers                             |         |
-| `Documentation` | `MKDocs` site to document functionalities and capacities |         |
+| Category        | Description                                                         | Version |
+|-----------------|---------------------------------------------------------------------|---------|
+| `Functionality` | randomize object (e.g. `random(Person.class)`                       | `0.3.0` |
+| `Functionality` | randomize record (e.g. `random(Person.class)`                       | `0.3.0` |
+| `Functionality` | randomize collection of objects (e.g. `randomListOf(Person.class)`) | `0.3.0` |
+| `Functionality` | configure randomizer parameter                                      |         |
+| `Functionality` | register/override randomizers                                       |         |
+| `Performance`   | performance and KPI for each method                                 |         |
+| `Performance`   | cache collection randomizers                                        |         |
+| `Documentation` | `MKDocs` site to document functionalities and capacities            |         |
 
 ## Pipelines
 

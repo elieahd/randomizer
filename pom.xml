@@ -81,7 +81,7 @@
                 <version>0.6.0</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <publishingServerId>central</publishingServerId>
+                    <publishingServerId>ossrh-releases</publishingServerId>
                 </configuration>
             </plugin>
             <plugin>

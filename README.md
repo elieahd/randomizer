@@ -6,9 +6,10 @@
 
 ## Dependency
 
-Artifact has been deployed to maven central. 
+Artifact has been deployed to maven central.
 
 ```xml
+
 <dependency>
     <groupId>io.github.elieahd</groupId>
     <artifactId>randomizer</artifactId>
@@ -16,63 +17,39 @@ Artifact has been deployed to maven central.
 </dependency>
 ```
 
-Check [here](https://central.sonatype.com/artifact/io.github.elieahd/randomizer/versions) for versions 
-
-## Types
-
-| Usage                                                   | Description                                                                                                 |
-|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| `int output = random(int.class);`                       | random `int` between `0` and `100`                                                                          |
-| `Integer output = random(Integer.class);`               | random `Integer` between `0` and `100`                                                                      |
-| `float output = random(float.class);`                   | random `float` between `0.0f` and `100.0f`                                                                  |
-| `Float output = random(Float.class);`                   | random `Float` between `0.0f` and `100.0f`                                                                  |
-| `double output = random(double.class);`                 | random `double` between `0.0` and `100.0`                                                                   |
-| `Double output = random(Double.class);`                 | random `Double` between `0.0` and `100.0`                                                                   |
-| `long output = random(long.class);`                     | random `long` between `0L` and `100L`                                                                       |
-| `Long output = random(Long.class);`                     | random `Long` between `0L` and `100L`                                                                       |
-| `short output = random(short.class);`                   | random `short` between `0` and `100`                                                                        |
-| `Short output = random(Short.class);`                   | random `Short` between `0` and `100`                                                                        |
-| `BigDecimal output = random(BigDecimal.class);`         | random `BigDecimal` between `BigDecimal.ZERO` and `BigDecimal.valueOf(100.0)`                               |
-| `BigInteger output = random(BigInteger.class);`         | random `BigInteger` between `BigInteger.ZERO` and `BigInteger.valueOf(100L)`                                |
-| `String output = random(String.class);`                 | random `String` of 10 characters alphanumeric values (uppercase and lowercase) including special characters |
-| `Character output = random(Character.class);`           | random `Character` letters                                                                                  |
-| `char output = random(char.class);`                     | random `char` letters                                                                                       |
-| `Byte output = random(Byte.class);`                     | random `Byte` between `-128` and `127`                                                                      |
-| `byte output = random(byte.class);`                     | random `byte` between `-128` and `127`                                                                      |
-| `BigInteger output = random(BigInteger.class);`         | random `BigInteger` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                                |
-| `Date output = random(Date.class);`                     | random `java.util.Date` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                            |
-| `Date output = random(Date.class);`                     | random `java.sql.Date` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                             |
-| `LocalDate output = random(LocalDate.class);`           | random `LocalDate` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                                 |
-| `LocalTime output = random(LocalTime.class);`           | random `LocalTime` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                                 |
-| `LocalDateTime output = random(LocalDateTime.class);`   | random `LocalDateTime` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                             |
-| `ZonedDateTime output = random(ZonedDateTime.class);`   | random `ZonedDateTime` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                             |
-| `OffsetDateTime output = random(OffsetDateTime.class);` | random `OffsetDateTime` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                            |
-| `OffsetTime output = random(OffsetTime.class);`         | random `OffsetTime` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                                |
-| `Instant output = random(Instant.class);`               | random `Instant` between `01/01/2000 00:00:00` and `31/12/20230 23:59:59`                                   |
-| `Color output = random(Color.class);`                   | random an enum value (exception is thrown if enum does not contains any values)                             |
-
-### Collection randomizer
-
-| Usage                                                                      | Description                                                                       |
-|----------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| `List<String> elements = randomListOf(String.class)`                       | generate a list of 5 elements of random string                                    |
-| `Map<Integer, String> elements = randomMapOf(Integer.class, String.class)` | generate a map of 5 elements of random integer as key with value as random string |
-| `Set<String> elements = randomSetOf(String.class)`                         | generate a set of 5 elements of random string                                     |
-| `String[] elements = randomArrayOf(String.class)`                          | generate an array of 5 elements of random string                                  |
-| `Stream<String> elements = randomStreamOf(String.class)`                   | generate a stream of 5 elements of random string                                  |
+Check [here](https://central.sonatype.com/artifact/io.github.elieahd/randomizer/versions) for versions
 
 ## Backlog
 
-| Category        | Description                                                         | Version |
-|-----------------|---------------------------------------------------------------------|---------|
-| `Functionality` | randomize object (e.g. `random(Person.class)`                       | `0.3.0` |
-| `Functionality` | randomize record (e.g. `random(Person.class)`                       | `0.3.0` |
-| `Functionality` | randomize collection of objects (e.g. `randomListOf(Person.class)`) | `0.3.0` |
-| `Functionality` | configure randomizer parameter                                      |         |
-| `Functionality` | register/override randomizers                                       |         |
-| `Performance`   | performance and KPI for each method                                 |         |
-| `Performance`   | cache collection randomizers                                        |         |
-| `Documentation` | `MKDocs` site to document functionalities and capacities            |         |
+|    | Category        | Description                                                                                                                                                                                                                | Version |
+|----|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| ✅  | `Functionality` | Randomize `String` : `random(String.class)`                                                                                                                                                                                | `0.1.0` |
+| ✅  | `Functionality` | Randomize numbers : <br/> -`int`/`Integer` <br/> - `float`/`Float` <br/> - `double`/`Double` <br/> - `long`/`Long` <br/> - `short`/`Short` <br/> - `BigDecimal` <br/> - `BigInteger`                                       | `0.1.0` |
+| ✅  | `Functionality` | Randomize `char` : `random(Character.class)` or `random(char.class)`                                                                                                                                                       | `0.1.0` |
+| ✅  | `Functionality` | Randomize `byte` : `random(Byte.class)` or `random(byte.class)`                                                                                                                                                            | `0.1.0` |
+| ✅  | `Functionality` | Randomize dates : <br/> - `java.util.Date` <br/> - `java.sql.Date` <br/> - `LocalDate` <br/> - `LocalTime` <br/> - `LocalDateTime` <br/> - `ZonedDateTime` <br/> - `OffsetDateTime` <br/> - `OffsetTime` <br/> - `Instant` | `0.2.0` |
+| ✅  | `Functionality` | Randomize enum (e.g. `random(Color.class)`)                                                                                                                                                                                | `0.2.0` |
+| ✅  | `Functionality` | Randomize `List` of field : `randomListOf(String.class)`                                                                                                                                                                   | `0.2.0` |
+| ✅  | `Functionality` | Randomize `Map` of field : `randomMapOf(Integer.class, String.class) `                                                                                                                                                     | `0.2.0` |
+| ✅  | `Functionality` | Randomize `Set` of field : `randomSetOf(String.class)`                                                                                                                                                                     | `0.2.0` |
+| ✅  | `Functionality` | Randomize `Array` of field : `randomArrayOf(String.class)`                                                                                                                                                                 | `0.2.0` |
+| ✅  | `Functionality` | Randomize `Stream` of field : `randomStreamOf(String.class)`                                                                                                                                                               | `0.2.0` |
+| ✅  | `Performance`   | Cache field randomizer                                                                                                                                                                                                     | `0.2.0` |
+| ✅  | `Devops`        | Automatic pipeline on push on main : <br/> - Pre-Checks (tests + sonar + codecov) <br/> - Deployment (package, deploy to maven central, tag, release)                                                                      | `0.2.0` |
+| ✅  | `Devops`        | Automatic pipeline on PR : <br/> - tests <br/> - sonar analysis <br/> - sonar quality gate)                                                                                                                                | `0.2.0` |
+| ✅  | `Devops`        | Weekly dependabot pipeline for dependencies (maven + github actions)                                                                                                                                                       | `0.2.0` |
+| ✅  | `Devops`        | Deploy artifact to maven central                                                                                                                                                                                           | `0.2.0` |
+| 🔲 | `Functionality` | randomize object (e.g. `random(Person.class)`                                                                                                                                                                              | `0.3.0` |
+| 🔲 | `Functionality` | randomize record (e.g. `random(Person.class)`                                                                                                                                                                              | `0.3.0` |
+| 🔲 | `Functionality` | randomize collection of objects (e.g. `randomListOf(Person.class)`)                                                                                                                                                        | `0.3.0` |
+| ✅  | `Bug`           | fix infinite loop issue in Map randomizer (keys < number of elements)                                                                                                                                                      | `0.3.0` |
+| 🔲 | `Functionality` | configure randomizer parameter                                                                                                                                                                                             | `0.4.0` |
+| 🔲 | `Functionality` | register/override randomizers                                                                                                                                                                                              | `0.4.0` |
+| 🔲 | `Performance`   | cache collection randomizers                                                                                                                                                                                               | `0.4.0` |
+| 🔲 | `Performance`   | performance and KPI for each method                                                                                                                                                                                        | `0.4.0` |
+| 🔲 | `Documentation` | `MKDocs` site to document functionalities and capacities                                                                                                                                                                   |         |
+| 🔲 | `Documentation` | `Java Doc`                                                                                                                                                                                                                 |         |
+| 🔲 | `Documentation` | `Medium` article on randomizing data in tests                                                                                                                                                                              |         |
 
 ## Pipelines
 

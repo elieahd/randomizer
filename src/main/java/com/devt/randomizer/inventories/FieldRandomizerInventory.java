@@ -41,11 +41,10 @@ import java.util.UUID;
 
 public class FieldRandomizerInventory {
 
-    protected final Map<Class<?>, Randomizer<?>> randomizers;
+    private final Map<Class<?>, Randomizer<?>> randomizers;
     private final RandomizerParameter parameter;
 
     public FieldRandomizerInventory(final RandomizerParameter parameter) {
-        super();
         this.parameter = parameter;
         this.randomizers = new HashMap<>();
         registerStringRandomizer();
@@ -72,14 +71,13 @@ public class FieldRandomizerInventory {
     }
 
     public <T> Randomizer<T> get(Class<T> clazz) {
-        final Randomizer<?> randomizer = randomizers.get(clazz);
-        if (randomizer != null) {
-            return (Randomizer<T>) randomizer;
-        }
-        if (clazz.isEnum()) {
-            return (Randomizer<T>) registerEnum(clazz.asSubclass(Enum.class));
-        }
-        throw new UnsupportedOperationException("'%s' is not a supported field".formatted(clazz.getName()));
+        Randomizer<?> randomizer = randomizers.computeIfAbsent(clazz, noRandomizerFoundClass -> {
+            if (noRandomizerFoundClass.isEnum()) {
+                return registerEnum(noRandomizerFoundClass.asSubclass(Enum.class));
+            }
+            throw new UnsupportedOperationException("'%s' is not a supported field".formatted(clazz.getName()));
+        });
+        return (Randomizer<T>) randomizer;
     }
 
     private <T extends Enum<T>> Randomizer<T> registerEnum(Class<T> enumClazz) {

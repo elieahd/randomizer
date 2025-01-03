@@ -1,6 +1,7 @@
 package com.devt.randomizer.randomizers.collections;
 
 import com.devt.randomizer.randomizers.Randomizer;
+import com.devt.randomizer.randomizers.fields.numbers.IntegerRandomizer;
 import com.devt.randomizer.randomizers.stubs.StubRandomizer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -79,6 +80,22 @@ class MapRandomizerTest {
         assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Collection randomizer failed initializing, because number of elements '-1' must be greater than 0");
+    }
+
+    @Test
+    void shouldThrowIllegalArgumentExceptionWhenKeyRandomizerCanNotGenerateTheNumberOfElements() {
+        // Arrange
+        Randomizer<Integer> limitedKeyRandomizer = new IntegerRandomizer(1, 3); // possible keys = [1, 2, 3]
+        int numberOfElements = 5;
+        // Act
+        Throwable thrown = catchThrowable(() -> {
+            MapRandomizer<Integer, String> randomizer = new MapRandomizer<>(limitedKeyRandomizer, valueRandomizer, numberOfElements);
+            randomizer.next();
+        });
+        // Assert
+        assertThat(thrown)
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("Unable to generate a random map, because the key randomizer generates less unique keys than the required number of elements '5'");
     }
 
 }

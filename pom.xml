@@ -6,7 +6,7 @@
 
     <groupId>io.github.elieahd</groupId>
     <artifactId>randomizer</artifactId>
-    <version>0.2.3</version>
+    <version>0.2.4</version>
     <description>Randomizing data for various types. Ideal for testing and creating dummy data</description>
     <url>https://github.com/elieahd/randomizer</url>
 
